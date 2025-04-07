@@ -10,7 +10,7 @@ import ExpressIcon from '../assets/Express.png';
 import MySQLIcon from '../assets/MySQL.png';
 import MongoDBIcon from '../assets/MongoDB.png';
 import GitIcon from '../assets/Git.png';
-import GitHubIcon from '../assets/GitHub.png';
+import GitHubIcon from '../assets/Github.png';
 import VSCodeIcon from '../assets/VSCode.png';
 import PostmanIcon from '../assets/Postman.png';
 import MongoDBCompassIcon from '../assets/MongoDBCompass.png';

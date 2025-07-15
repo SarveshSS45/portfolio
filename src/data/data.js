@@ -62,16 +62,11 @@ export const projectsData = [
     github: "https://github.com/SarveshSS45/NewsInsights",
   },
   {
-    name: "Doc-Classifier",
+    name: "Hotel Management System",
     description:
-      "Doc-Classifier is a project developed using Python and Django to categorize documents efficiently. I worked on creating a robust backend to handle document classification and ensure seamless user interactions.",
-    techStack: ["Python", "Django"],
-  },
-  {
-    name: "Property Management",
-    description:
-      "An online property management solution for real estate and physical property management. This can include residential, commercial, and land real estate. A software developed to connect property managers and potential buyers.",
-    techStack: ["Angular", "Fastify"],
+      "The Hotel Management System is a web-based application built using ASP.NET Core MVC. It leverages Entity Framework (Database-First Approach) and LINQ to interact with a SQL database. The system enables customers to place orders, generate bills, and manage menu items dynamically.",
+    techStack: ["ASP.NET Core MVC", "Entity Framework", "MSSQL"],
+    github: "https://github.com/SarveshSS45/HotelManagement",
   },
 ];
 
@@ -123,7 +118,7 @@ export const educationData = [
     university: "Mumbai University",
     universityImage: MumbaiImage,
     batch: "2023-25",
-    grade: "8.1 CGPA",
+    grade: "8.2 CGPA",
   },
   {
     degree: "Bachelor of Science in Information Technology (B.Sc. IT)",

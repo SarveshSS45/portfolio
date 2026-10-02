@@ -41,13 +41,12 @@ const Home = () => {
   return (
     <motion.section
       id="home"
-      className="h-screen bg-gray-100 dark:bg-gray-900 flex items-start justify-center pt-24 md:pt-32 transition-colors duration-300"
+      className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-start justify-center pt-24 md:pt-32 pb-24 md:pb-0 transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-4 md:pl-16 lg:pl-24">
-        
         {/* Left Side - Introduction */}
         <motion.div
           className="md:w-1/2 text-center md:text-left space-y-2"

@@ -14,6 +14,9 @@ import GitHubIcon from "../assets/Github.png";
 import VSCodeIcon from "../assets/VSCode.png";
 import PostmanIcon from "../assets/Postman.png";
 import MongoDBCompassIcon from "../assets/MongoDBCompass.png";
+import ASPNetCoreIcon from "../assets/DotNetFramework.png";
+import EntityFrameworkIcon from "../assets/EntityFrameworkCore.png";
+import VSIcon from "../assets/VisualStudio2026.png";
 
 // Home.jsx
 import GithubIcon from "../assets/Github.png";
@@ -52,8 +55,33 @@ and growth as a Full Stack Developer, aiming to become a Software Development En
   profileImage: ProfileImage,
 };
 
+
+// Experience Data
+
+export const experienceData = [
+  {
+    role: "Software Developer",
+    company: "Domex Technical Information Pvt Ltd",
+    duration: "08/2025 – Present",
+    points: [
+      "Developed psychometric assessment modules for the Psychometrica platform using ASP.NET Core, C#, and MSSQL.",
+      "Built a secure payment integration module for online test purchases with end-to-end transaction handling.",
+      "Implemented RESTful APIs for test management, user administration, and result processing.",
+      "Worked on full-stack projects using React.js front-end with .NET back-end, integrating RESTful APIs and SQL Server.",
+    ],
+  },
+];
+
 // Project Data
 export const projectsData = [
+  {
+    name: "E-Commerce App",
+    description:
+      "A full-stack e-commerce platform built with React and ASP.NET Core Web API (.NET 8) using Clean Architecture. Includes product catalog with image galleries, cart and checkout, Razorpay payments, JWT authentication with refresh tokens, wishlist, reviews, coupons, and an admin dashboard with analytics and role-based access.",
+    techStack: ["React", "ASP.NET Core Web API", "SQL Server", "Tailwind CSS"],
+    github: "https://github.com/SarveshSS45/ECommerceApp",
+  },
+
   {
     name: "NewsInsight",
     description:
@@ -85,8 +113,10 @@ export const skillsData = [
   {
     category: "Backend",
     skills: [
+      { name: "ASP.NET Core MVC", icon: ASPNetCoreIcon },
       { name: "Node JS", icon: NodeJSIcon },
       { name: "Express JS", icon: ExpressIcon },
+      { name: "Entity Framework Core", icon: EntityFrameworkIcon },
       { name: "MySQL", icon: MySQLIcon },
       { name: "MongoDB", icon: MongoDBIcon },
     ],
@@ -104,6 +134,7 @@ export const skillsData = [
       { name: "Git", icon: GitIcon },
       { name: "GitHub", icon: GitHubIcon },
       { name: "VS Code", icon: VSCodeIcon },
+      { name: "Visual Studio", icon: VSIcon },
       { name: "Postman", icon: PostmanIcon },
       { name: "MongoDB Compass", icon: MongoDBCompassIcon },
     ],

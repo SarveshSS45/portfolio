@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   FaHome,
+  FaBriefcase,
   FaProjectDiagram,
   FaTools,
   FaGraduationCap,
@@ -18,8 +19,9 @@ const Header = () => {
     if (currentHash) setSelectedTab(currentHash);
   }, []);
 
-  const navItems = [
+    const navItems = [
     { id: "home", label: "Home", icon: <FaHome className="text-xl" /> },
+    { id: "experience", label: "Experience", icon: <FaBriefcase className="text-xl" /> },
     { id: "projects", label: "Projects", icon: <FaProjectDiagram className="text-xl" /> },
     { id: "skills", label: "Skills", icon: <FaTools className="text-xl" /> },
     { id: "education", label: "Education", icon: <FaGraduationCap className="text-xl" /> },

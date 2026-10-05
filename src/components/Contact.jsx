@@ -1,14 +1,20 @@
-import { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaPaperPlane } from "react-icons/fa";
+
+const fieldClass =
+  "w-full p-3 rounded-lg border border-gray-300 dark:border-white/15 bg-white/70 dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-cyan-400 focus:border-transparent transition";
 
 const Contact = () => {
   const form = useRef();
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setSending(true);
 
     emailjs
       .sendForm(
@@ -19,6 +25,7 @@ const Contact = () => {
       )
       .then(
         () => {
+          setSending(false);
           setSent(true);
           setError(false);
           form.current.reset();
@@ -28,6 +35,7 @@ const Contact = () => {
           }, 4000);
         },
         () => {
+          setSending(false);
           setSent(false);
           setError(true);
         }
@@ -37,55 +45,55 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-white dark:bg-gray-900 p-8 flex items-center justify-center"
+      className="min-h-screen bg-gray-100 dark:bg-gray-900 p-8 flex items-center justify-center"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-3xl bg-gray-100 dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 
-                   transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 
-                   hover:border-indigo-400 hover:shadow-indigo-500/40"
+        className="relative overflow-hidden glass-card w-full max-w-3xl rounded-xl p-8"
       >
-        <h2 className="text-4xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+        {/* Gradient line on top */}
+        <div className="absolute top-0 left-0 right-0 h-1 gradient-bg" />
+
+        <h2 className="text-4xl font-bold text-center mb-6 mt-1 gradient-text">
           Contact Me
         </h2>
 
-        <form
-          ref={form}
-          onSubmit={sendEmail}
-          className="space-y-6"
-        >
+        <form ref={form} onSubmit={sendEmail} className="space-y-6">
           <input
             type="text"
             name="user_name"
             placeholder="Your Name"
             required
-            className="w-full p-3 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className={fieldClass}
           />
           <input
             type="email"
             name="user_email"
             placeholder="Your Email"
             required
-            className="w-full p-3 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className={fieldClass}
           />
           <textarea
             name="message"
             placeholder="Your Message"
             rows="5"
             required
-            className="w-full p-3 border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className={fieldClass}
           />
 
           <div className="flex justify-end">
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400"
+              disabled={sending}
+              whileHover={sending ? {} : { scale: 1.05 }}
+              whileTap={sending ? {} : { scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-indigo-700 dark:text-cyan-200 bg-white/40 dark:bg-white/5 border border-indigo-500/60 dark:border-cyan-400/60 backdrop-blur-md transition-shadow duration-300 hover:shadow-lg hover:shadow-indigo-500/40 focus:outline-none focus:ring-4 focus:ring-indigo-500/30 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              <FaPaperPlane className="text-sm" />
+              <span>{sending ? "Sending..." : "Send Message"}</span>
             </motion.button>
           </div>
 

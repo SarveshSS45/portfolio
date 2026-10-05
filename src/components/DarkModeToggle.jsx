@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const DarkModeToggle = () => {
   const [theme, setTheme] = useState(() => {
@@ -14,10 +15,15 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white transition-all duration-300 hover:scale-110 shadow-md"
+      className="glass-card glass-card-hover flex items-center justify-center w-10 h-10 rounded-full text-lg hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-cyan-400"
       title="Toggle Dark Mode"
+      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
     >
-      {theme === "dark" ? "☀️" : "🌙"}
+      {theme === "dark" ? (
+        <FaSun className="text-amber-300" />
+      ) : (
+        <FaMoon className="text-indigo-600" />
+      )}
     </button>
   );
 };

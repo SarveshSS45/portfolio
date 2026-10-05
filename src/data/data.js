@@ -21,7 +21,7 @@ import VSIcon from "../assets/VisualStudio2026.png";
 // Home.jsx
 import GithubIcon from "../assets/Github.png";
 import LinkedInIcon from "../assets/linkedIn.png";
-import ProfileImage from "../assets/profilepic.png";
+import ProfileImage from "../assets/profilepic1.png";
 
 // Education.jsx
 import MumbaiImage from "../assets/MUMBAI.jpg";
@@ -30,11 +30,7 @@ import BSCImage from "../assets/GNKHALSA.png";
 export const homeData = {
   name: "Sarvesh Sonawane",
   roles: ["Software Developer", "Frontend Developer", "Gamer"],
-  bio: `Motivated fresher with a strong passion for web and mobile development. 
-Skilled in building dynamic and efficient applications using modern frameworks. 
-Eager to embrace new challenges, enhance problem-solving abilities, and collaborate 
-with innovative teams. Adaptable, driven, and committed to continuous learning 
-and growth as a Full Stack Developer, aiming to become a Software Development Engineer.`,
+  bio: `Full Stack Developer with hands-on experience building web applications using ASP.NET Core, C#, SQL Server and React. I work on assessment platforms, REST APIs and secure payment integrations, and I enjoy turning real-world requirements into clean, reliable software.`,
 
   resumeUrl:
     "https://drive.google.com/file/d/1oCFV6ZnCzT8a_1199kad9OSQ6isE1H4i/view?usp=sharing",

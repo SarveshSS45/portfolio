@@ -19,7 +19,7 @@ const Header = () => {
     if (currentHash) setSelectedTab(currentHash);
   }, []);
 
-    const navItems = [
+  const navItems = [
     { id: "home", label: "Home", icon: <FaHome className="text-xl" /> },
     { id: "experience", label: "Experience", icon: <FaBriefcase className="text-xl" /> },
     { id: "projects", label: "Projects", icon: <FaProjectDiagram className="text-xl" /> },
@@ -33,10 +33,18 @@ const Header = () => {
       href={`#${id}`}
       onClick={() => setSelectedTab(id)}
       className={`flex items-center justify-center text-sm transition-all duration-300 px-3 py-2 rounded-lg ${
-        selectedTab === id ? "bg-gray-100 dark:bg-gray-800 shadow-md" : ""
+        selectedTab === id
+          ? "bg-indigo-500/10 dark:bg-white/10 ring-1 ring-indigo-500/30 dark:ring-white/10"
+          : ""
       }`}
     >
-      <div className="text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">
+      <div
+        className={`transition-colors duration-300 ${
+          selectedTab === id
+            ? "text-indigo-600 dark:text-cyan-300"
+            : "text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-300"
+        }`}
+      >
         <div className="flex items-center gap-2">
           {icon}
           <AnimatePresence mode="wait" initial={false}>
@@ -47,7 +55,7 @@ const Header = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
                 transition={{ duration: 0.25 }}
-                className="font-bold text-[17px]"
+                className="font-bold text-[17px] gradient-text"
               >
                 {label}
               </motion.span>
@@ -59,10 +67,13 @@ const Header = () => {
   );
 
   return (
-    <header className="bg-white dark:bg-gray-900 sticky top-0 z-50 shadow-md border-b border-gray-200 dark:border-gray-700">
-      <div className="container mx-auto flex justify-between items-center p-4">
+    <header className="sticky top-0 z-50 shadow-sm">
+      {/* Glass background layer (kept separate so the fixed mobile elements below stay pinned to the screen) */}
+      <div className="absolute inset-0 bg-white/70 dark:bg-ink-950/70 backdrop-blur-xl border-b border-gray-200/60 dark:border-white/10 pointer-events-none" />
+
+      <div className="relative container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
-        <h1 className="text-2xl font-bold leading-tight text-gray-900 dark:text-indigo-400">
+        <h1 className="text-2xl font-bold leading-tight gradient-text">
           &lt; Sarvesh Sonawane /&gt;
         </h1>
 
@@ -73,14 +84,22 @@ const Header = () => {
               key={item.id}
               href={`#${item.id}`}
               onClick={() => setSelectedTab(item.id)}
-              className={`relative group transition-colors duration-300 px-2 py-1 ${
-                selectedTab === item.id
-                  ? "text-indigo-600 dark:text-indigo-400"
-                  : "text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400"
-              }`}
+              className="relative group px-2 py-1"
             >
-              {item.label}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 dark:bg-indigo-400 transition-all duration-300 group-hover:w-full origin-left"></span>
+              <span
+                className={`transition-colors duration-300 ${
+                  selectedTab === item.id
+                    ? "gradient-text"
+                    : "text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-cyan-300"
+                }`}
+              >
+                {item.label}
+              </span>
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 gradient-bg transition-all duration-300 origin-left ${
+                  selectedTab === item.id ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              ></span>
             </a>
           ))}
         </div>
@@ -92,7 +111,7 @@ const Header = () => {
       </div>
 
       {/* Bottom Mobile Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 px-2 py-2 flex justify-around items-center z-50">
+      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/80 dark:bg-ink-950/80 backdrop-blur-xl border-t border-gray-200/60 dark:border-white/10 px-2 py-2 flex justify-around items-center z-50">
         {navItems.map((item) => (
           <NavLink key={item.id} {...item} />
         ))}
